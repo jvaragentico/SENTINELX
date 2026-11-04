@@ -1,0 +1,21 @@
+services:
+  web:
+    build: .
+    ports: ["3000:3000"]
+    restart: unless-stopped
+    environment:
+      ROBINHOOD_RPC_URL: ${ROBINHOOD_RPC_URL:-https://rpc.testnet.chain.robinhood.com}
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://localhost:3000/api/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+  worker:
+    build: .
+    command: ["node", "worker.mjs"]
+    restart: unless-stopped
+    volumes: ["worker-data:/app/data"]
+    environment:
+      ROBINHOOD_RPC_URL: ${ROBINHOOD_RPC_URL:-https://rpc.testnet.chain.robinhood.com}
+volumes:
+  worker-data:

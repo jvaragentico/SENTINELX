@@ -1,0 +1,39 @@
+{
+  "name": "sentinelx",
+  "version": "1.0.0",
+  "description": "Independent evidence-first Robinhood Chain testnet security monitoring",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next dev --hostname 0.0.0.0",
+    "build": "next build",
+    "start": "next start --hostname 0.0.0.0",
+    "typecheck": "tsc --noEmit",
+    "test": "tsx --test tests/monitor.test.ts",
+    "test:contracts": "tsx scripts/test-contracts.ts",
+    "test:e2e": "playwright test",
+    "worker": "tsx scripts/worker.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "@openzeppelin/contracts": "^5.6.1",
+    "lucide-react": "^1.68.0",
+    "next": "^16.4.5",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "viem": "^2.57.16"
+  },
+  "private": true,
+  "devDependencies": {
+    "@playwright/test": "^1.64.1",
+    "@types/node": "^26.6.6",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "ganache": "^7.9.2",
+    "solc": "^0.8.38",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2"
+  }
+}
