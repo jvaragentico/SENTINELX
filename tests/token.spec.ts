@@ -1,0 +1,2 @@
+import {test,expect} from '@playwright/test';
+test('SNTX leads the dashboard and opens token utility',async({page})=>{await page.goto('/');await expect(page.getByRole('heading',{name:/One token/})).toBeVisible();await expect(page.getByText('Not deployed',{exact:true})).toBeVisible();await page.getByRole('button',{name:'Explore $SNTX',exact:true}).click();await expect(page.getByRole('heading',{name:'Transparent economics.'})).toBeVisible();});
